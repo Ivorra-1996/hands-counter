@@ -42,4 +42,4 @@ dataset_dir: C:\Users\<Usuario>\Desktop\hands-counter\hands-counter
 ```
 
 3. **Otra opción**:
-Borrar el archivo `settings.yaml`, despues se crea otro solo cuando ejecutas el entrenamiento.
+    Borrar el archivo `settings.yaml`, despues se crea otro solo cuando ejecutas el entrenamiento.
