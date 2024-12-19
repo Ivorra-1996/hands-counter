@@ -3,12 +3,13 @@ from ultralytics import YOLO
 
 # Configuración
 MODEL_PATH = "./runs/detect/train/weights/best.pt"  # Modelo entrenado
-CAMERA_URL = "http://192.168.0.100:4747/video"  # URL de DroidCamApp
+CAMERA_URL = "http://192.168.0.82:4747/video"  # URL de DroidCamApp
 
 def run_inference():
     print("Cargando modelo YOLO entrenado...")
     model = YOLO(MODEL_PATH)
-    
+    print("Tipo de clase: ", model.names)
+
     print("Conectando a la cámara...")
     cap = cv2.VideoCapture(CAMERA_URL)
 
@@ -23,8 +24,8 @@ def run_inference():
             break
 
         # Realizar inferencia
-        results = model(frame)
-
+        results = model(frame, imgsz=640)  # Fuerza la resolución a 640x640
+        
         # Mostrar resultados en pantalla
         annotated_frame = results[0].plot()
         cv2.imshow("Detección en tiempo real", annotated_frame)
